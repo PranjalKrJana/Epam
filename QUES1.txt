@@ -1,0 +1,25 @@
+1. write a shell script function that take name of a file or directory as unlimited argument and reports if it is a regular file, a directory, or another type of file. 
+Also perform an ls command against the file or directory with the long listing option. Write for all the mention details . also create function function “file_count” and call it in your script. If you use variable in your function, remember to make it a local variable. [5]
+Ans:Ans:
+#!/bin/bash
+echo “Enter file path”
+read FILE
+if [ -f “$file” ]
+  then
+    echo “$file is a reguler file”
+elif [ -d “$file” ]
+  then
+    echo “$file is a directory”
+else
+    echo “$file is another type of file”
+fi
+ls -l $file
+
+#!/bin/bash
+function file_count()
+ {
+   local num_of_file=$(ls -l | wc -l)
+    echo "$num_of_file"
+ }
+file_count
+
